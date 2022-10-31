@@ -1,0 +1,15 @@
+
+  <div class="form-group col-lg-10">
+    <ng-multiselect-dropdown class="form-control"
+      [placeholder]="'custom placeholder'"
+      [settings]="dropdownSettings"
+      [data]="dropdownList"
+      [(ngModel)]="selectedItems"
+      (onSelect)="onItemSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+    >
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="form-group col-lg-2">
+    <input class="btn btn-primary form-control" [disabled]="buttonDisabled" (click)="updatePreferedGenres()" type="button" value="Ενημέρωση">
+  </div>

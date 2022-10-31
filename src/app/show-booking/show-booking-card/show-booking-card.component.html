@@ -1,0 +1,20 @@
+<div class="card mb-4">
+    <div class="card-img-wrapper">
+        <img src="{{'./assets/theatre.png'}}" class="card-img-top">
+        <button class="btn btn-primary" routerLink = '/show-booking/{{show.id}}'><i class="fa fa-circle-info"></i></button>
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item">
+                
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-1">
+        <p class="card-text text-muted text-center">{{show.dateStart | date: 'd MMM, y'}} - </p>
+        <p class="card-text text-muted text-center">{{show.dateEnd | date: 'd MMM, y'}}</p>
+        <h6 class="card-title text-center mb-1">
+            {{show.title}}
+            <br>
+        </h6>
+        <p class="card-text text-muted text-center">{{show.hallName}}</p>
+    </div>
+</div>

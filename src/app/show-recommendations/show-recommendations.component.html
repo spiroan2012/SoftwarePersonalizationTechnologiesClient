@@ -1,0 +1,11 @@
+<div *ngIf="recommendedShows.length > 0">
+    <div class="text-center mt-3">
+        <h2>Σας προτείνουμε με βάση την τοποθεσία σας και τις προτιμήσεις σας</h2>
+    </div>
+    <div class="row">
+        <div  *ngFor = "let show of recommendedShows" class="col-2">
+            <app-show-booking-card [show] = 'show'></app-show-booking-card>
+        </div>
+    </div>
+</div>
+<h6 *ngIf="recommendedShows.length == 0">Δεν μπορέσαμε να βρούμε προτεινόμενες παραστάσεις</h6> 

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/" routerLinkActive='active'>Show Booking</a>
+          <ul class="navbar-nav mr-auto" >
+            <ng-container *ngIf="accountService.currentUser | async"> 
+              <li *appHasRole = '["Admin", "Moderator"]' class="nav-item">
+                <a class="nav-link" routerLink="/booking-calendar" routerLinkActive='active'>Ημερολόγιο διαθεσιμότητας και κρατήσεων</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/show-booking" routerLinkActive='active'>Κράτηση θέσεων</a>
+              </li>
+              <li *appHasRole = '["Admin", "Moderator"]' class="nav-item">
+                <a class="nav-link" routerLink="/show-management-index" routerLinkActive='active'>Διαχείριση Παραστάσεων</a>
+              </li>
+              <li *appHasRole = '["Admin", "Moderator"]' class="nav-item">
+                <a class="nav-link" routerLink="/hall-management-index" routerLinkActive='active'>Διαχείριση Χώρων</a>
+              </li>
+              <li *appHasRole = '["Admin"]' class="nav-item">
+                <a class="nav-link" routerLink="/admin-panel" routerLinkActive='active'>Διαχειριστής</a>
+              </li>
+            </ng-container>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/entrance-register" routerLinkActive='active'>Καταγραφή Εισόδου</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" routerLink="/errors" tabindex="-1" routerLinkActive='active'>Errors</a>
+            </li> -->
+          </ul>
+          <div class="dropdown" *ngIf = "(accountService.currentUser | async) as user" dropdown>
+            <a class="dropdown-toggle text-light ml-2" dropdownToggle> Έχετε συνδεθεί ως:  {{user.firstName|  titlecase}} {{user.lastName | titlecase}}  </a>
+            <div class="dropdown-menu mt-3" *dropdownMenu>
+                <a class="dropdown-item" routerLink = "/user-genres">Επεξεργασία προφίλ</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" (click) ="logout()">Αποσύνδεση</a>
+            </div>
+        </div>
+          <button class="btn btn-success my-2 my-sm-0" (click) = "loginToggle()" *ngIf = "!(accountService.currentUser | async)">Σύνδεση Χρήστη</button>
+        </div>  
+  </nav>

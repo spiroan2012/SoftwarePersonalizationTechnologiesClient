@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <form [formGroup] = "loginForm" (ngSubmit) = "loginForm.valid  && login()" autocomplete="off">
+                <h2 class="text-center text-primary">Σύνδεση</h2>
+                <hr>
+                <app-text-input [formControl] = 'loginForm.controls["username"]' [label] = "'Όνομα χρηστη'"></app-text-input>
+                <app-text-input [formControl] = 'loginForm.controls["password"]' [label] = "'Κωδικός πρόσβασης'" [type] = "'password'"></app-text-input>
+            
+                <div class="row" *ngIf="validationErrors.length > 0">
+                    <ul class="text-danger">
+                        <li *ngFor="let error of validationErrors">
+                            {{error}}
+                        </li>
+                    </ul>
+                </div>
+            
+
+            </form>
+            <div class="form-group text-center">
+                <button class="btn btn-success mr-2" type="button" (click) = "login()" [disabled] = '!loginForm.valid'>Σύνδεση</button>
+                <!-- <div (click)="loginWithGoogle()">
+                    <asl-google-signin-button> </asl-google-signin-button>
+                </div>
+                 -->
+                <!-- <button class="btn btn-default mr-2" type="button" (click) = "cancel()">Επιστροφή</button> -->
+                <!-- <button class="btn btn-info mr-2" type="button" (click)="loginWithGoogle()" style="margin-left:10px;" >Σύνδεση με Facebook</button> -->
+            </div>
+        </div>
+    </div>   
+</div>
