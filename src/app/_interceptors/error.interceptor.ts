@@ -38,6 +38,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.toastr.error(error.error, error.status);
               }
               break;
+            case 500:
+              this.toastr.error(error.error.Message, "Προσοχή");
           }
           return throwError(error);
         }

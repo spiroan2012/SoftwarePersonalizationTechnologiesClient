@@ -94,7 +94,12 @@ export class AccountService {
   setCurrentUser(user: User){
     user.roles = [];
     const roles = this.getDecodedToken(user.token).role;
-    Array.isArray(roles) ? user.roles : user.roles.push(roles);
+    if(Array.isArray(roles)){
+      user.roles = roles
+    }
+    else{
+      user.roles.push(roles);
+    }
     localStorage.setItem('user', JSON.stringify(user));
     this.currentuserSource.next(user);
   }

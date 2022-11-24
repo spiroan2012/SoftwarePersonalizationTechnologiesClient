@@ -37,7 +37,7 @@
                 <td *ngIf="hallId == -1"><button (click) = "deleteShow(show.id,show.title)" class="btn btn-danger">Διαγραφή</button></td>
             </tr>
           </table>
-          <div  class="d-flex justify-content-center" *ngIf="pagination && hallId != -1">
+          <div  class="d-flex justify-content-center" *ngIf="pagination">
             <pagination 
                 [boundaryLinks]="true" 
                 [totalItems]="pagination.totalItems"

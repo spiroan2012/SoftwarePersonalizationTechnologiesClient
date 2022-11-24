@@ -30,7 +30,7 @@
                     (change) = "checkSelected()"
                     style="margin-top: 5px; margin-bottom: 25px;">
                 </ng-select>
-                <div *ngIf = 'showForm.controls["hall"]?.errors?.required" class="form-control"  class="invalid-feedback'>Παρακαλώ επιλέξτε ένα θέατρο</div>
+                <div *ngIf = 'showForm.controls["hall"]?.errors?.required"  class="invalid-feedback'>Παρακαλώ επιλέξτε ένα θέατρο</div>
             </div>
             <div>
                 <label for="title">Είδος:</label>
@@ -42,14 +42,14 @@
                     (change) = "checkSelected()"
                     style="margin-top: 5px; margin-bottom: 25px;">
                 </ng-select>
-                <div *ngIf = 'showForm.controls["genre"]?.errors?.required" class="form-control"  class="invalid-feedback'>Παρακαλώ επιλέξτε ένα είδος</div>
+                <div *ngIf = 'showForm.controls["genre"]?.errors?.required"  class="invalid-feedback'>Παρακαλώ επιλέξτε ένα είδος</div>
             </div>
             <div>
                 <label for="title">Ώρα έναρξης:</label><br>
                 <input [class.is-invalid] = 'showForm.controls["timeStart"].touched && showForm.controls["timeStart"].invalid'  [ngxTimepicker]="picker" placeholder="Ωρα" [formControl]='showForm.controls["timeStart"]' style="margin-top: 5px; margin-bottom: 25px;">
                 <ngx-material-timepicker #picker></ngx-material-timepicker>
-                <div *ngIf = 'showForm.controls["timeStart"]?.errors?.required" class="form-control"  class="invalid-feedback'>Παρακαλώ εισάγετε μια ώρα</div>
-            </div> -->
+                <div *ngIf = 'showForm.controls["timeStart"]?.errors?.required"  class="invalid-feedback'>Παρακαλώ εισάγετε μια ώρα</div>
+            </div>
             <div>
                 <label for="title">Διάρκεια:</label>
                 <app-text-input [type]="'number'" [formControl] = 'showForm.controls["duration"]' [label] = "'Θετικός αριθμός'"></app-text-input>
@@ -76,5 +76,28 @@
                 <a href="#" routerLink="/show-management-index" class="btn btn-primary">Πίσω</a>
             </div>
         </form>
+        <!-- <form #showForm="ngForm">
+            <h2 class="text-center text-primary">{{title}}</h2>
+            <hr>
+            <div class="form-group">
+                <label for="title">Τίτλος:</label>
+                <input  type="text" id ="title" class="form-control" style="margin-top: 5px; margin-bottom: 25px;" placeholder= "Μέχρι 60 χαρακτήρες">
+                <div class="alert alert-danger">Παρακαλώ εισάγετε έναν τίτλο</div>
+                
+            </div>
+            <div class="form-group">
+                <label for="title">Περιγραφή:</label>
+                <input  type="text" id ="description" class="form-control" style="margin-top: 5px; margin-bottom: 25px;" placeholder= "Μέχρι 600 χαρακτήρες">
+                <!-- <app-text-area [formControl] = 'showForm.controls["description"]' [label] = "'Μέχρι 600 χαρακτήρες'"></app-text-area> 
+            </div>
+            <div class="form-group">
+                <label for="title">Ημερομηνία έναρξης:</label>
+                <app-date-input [formControl] = 'showForm.controls["dateStart"]' [label] = "'Ημερομηνία έναρξης'" [maxDate] = "maxDate"></app-date-input>
+            </div>
+            <div class="form-group">
+                <label for="title">Ημερομηνία λήξης:</label>
+                <app-date-input [formControl] = 'showForm.controls["dateEnd"]' [minDate]="minDate" [label] = "'Ημερομηνία λήξης'" [maxDate] = "maxDate"></app-date-input>
+            </div>
+        </form> -->
     </div>
 </div>

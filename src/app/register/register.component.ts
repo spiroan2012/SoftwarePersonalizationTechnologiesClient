@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LocationDto } from '../_models/locationDto';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -71,10 +72,27 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  
+  private storeUsersLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        const longitude = position.coords.longitude;
+        const latitude = position.coords.latitude;
+
+        let model = new LocationDto(latitude, longitude);
+
+        this.accountService.updateLoggedUserLocation(model).subscribe(response => {
+          console.log(response);
+        })
+      })
+    }
+  }
+
   register(){
     this.accountService.register(this.registerForm.value).subscribe(
       response => {
-        this.router.navigateByUrl('/members');
+        this.storeUsersLocation();
+        this.router.navigateByUrl('/');
         this.cancel();
       },
       error => {
@@ -82,6 +100,7 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+
 
   cancel(){
     this.cancelRegister.emit(false);

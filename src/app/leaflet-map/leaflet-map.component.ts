@@ -80,19 +80,22 @@ export class LeafletMapComponent implements AfterViewInit {
  }
 
   private selectLocation(){
-    this.map.on('click', (e) => {
-      if(this.marker !== null){
-        this.map.removeLayer(this.marker);
-      }
-      var coord = e.latlng;
-      var lat = coord.lat;
-      var lng = coord.lng;
-
-      this.marker = new L.Marker([lat, lng]).addTo(this.map);
-
-      var location = new LocationDto(coord.lat, coord.lng);
-
-      this.markerEventEmmiter.emit(location); 
-    });
+    if(!this.viewMode){
+      this.map.on('click', (e) => {
+        if(this.marker !== null){
+          this.map.removeLayer(this.marker);
+        }
+        var coord = e.latlng;
+        var lat = coord.lat;
+        var lng = coord.lng;
+  
+        this.marker = new L.Marker([lat, lng]).addTo(this.map);
+  
+        var location = new LocationDto(coord.lat, coord.lng);
+  
+        this.markerEventEmmiter.emit(location); 
+      });
+    }
+    
   }
 }

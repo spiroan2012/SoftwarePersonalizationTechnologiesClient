@@ -2,7 +2,7 @@
 <div class="row" *ngIf="show">
     <div class="col-4">
         <div class="card">
-            <img src="{{'./assets/user.png'}}" class="card-img-top img-thumbnail">
+            <img src="{{'./assets/theatre.png'}}" class="card-img-top img-thumbnail">
         </div>
         <div class="card-body">
             <div>
@@ -25,6 +25,7 @@
                 <strong>Θέατρο: </strong>
                 <p>{{show.hallName}}</p>
             </div>
+            
         </div>
     </div>
     <div class="col-8">
@@ -36,6 +37,9 @@
                 <p>{{show.actors}}</p>
                 <h4>Σκηνοθεσία</h4>
                 <p>{{show.directors}}</p>
+                <hr>
+                <h4>Είδος</h4>
+                <p>{{show.genreDescription}}</p>
                 <hr>
                 <h4>Περιγραφή θεάτρου {{show.hallName}}</h4>
                 <p>{{show.hallDescription}}</p>
